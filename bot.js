@@ -190,8 +190,11 @@ async function killCatacombMonsters(currentTime) {
     for (let i = 0; i < 3; i++) {
 
         if (Gs.absc[i] !== undefined && Gs.absc[i] !== null && parseInt(Gs.absc[i].o.innerText, 10) >= 75) {
-            // Select the ability for the next tick
-            Gs.absc[i].down();
+
+            if (!Gs.absc[i].sel || parseInt(Gs.absc[i].sel) === 0) {
+                // Select the ability for the next tick
+                Gs.absc[i].down();
+            }
 
             // Wait for the skill to be marked
             await sleep(15);
