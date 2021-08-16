@@ -280,7 +280,7 @@ function isItemPickable(droppedItem) {
     if (parseInt(droppedItem[6]) < 2) return false;
 
     // Check for the item's enhanced effect
-    if (parseInt(droppedItem[8][0]) >= 40) return true;
+    if (parseInt(droppedItem[8][0]) >= 50) return true;
 
     // Check for the item's intelligence
     if (parseInt(droppedItem[8][4]) >= 15) return true;
@@ -320,7 +320,7 @@ function isTransmutableDrop(droppedItem) {
     if (parseInt(droppedItem[6]) === 1) return true;
 
     // Get level III items
-    if (parseInt(droppedItem[6]) === 2 && parseInt(droppedItem[7]) <= 3) return true;
+    if (parseInt(droppedItem[6]) === 2 && parseInt(droppedItem[7]) <= 4) return true;
 
     return false;
 }
