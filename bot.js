@@ -363,23 +363,24 @@ async function sellSpecialItems() {
             document.querySelectorAll('div.njRBWrap.marketTabs')[0].children[1].click();
         }
 
-        // Place the item on the market
-        Mkt.get().item.set(selectedItem);
+        if (Object.entries(Mkt.I).length < 25) {
+            // Place the item on the market
+            Mkt.get().item.set(selectedItem);
 
-        // Set the price
-        document.getElementById('mkSellCost').value = 1;
-        document.getElementById('mkGpwd').value = goldPassword;
+            // Set the price
+            document.getElementById('mkSellCost').value = 1;
+            document.getElementById('mkGpwd').value = goldPassword;
 
-        // Wait for the text to load
-        await sleep(25);
+            // Wait for the text to load
+            await sleep(25);
 
-        // Submit the purchase
-        document.getElementById('mkBuySell').click();
+            // Submit the purchase
+            document.getElementById('mkBuySell').click();
 
-        // Wait for the next item
-        await sleep(650);
+            // Wait for the next item
+            await sleep(650);
+        }
     }
-
 }
 
 async function manageTransmuting(currentTime, transmutableItemId) {
