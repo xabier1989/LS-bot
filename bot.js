@@ -317,7 +317,7 @@ function isTransmutableDrop(droppedItem) {
     if (Items.hasQuantity(droppedItem) || isItemPickable(droppedItem) || isSpecialDrop(droppedItem) || parseInt(droppedItem[7]) === 0) return false;
 
     // Get level II items
-    if (parseInt(droppedItem[6]) === 1) return true;
+    if (parseInt(droppedItem[6]) === 1 && parseInt(droppedItem[7]) > 1) return true;
 
     // Get level III items
     if (parseInt(droppedItem[6]) === 2 && parseInt(droppedItem[7]) <= 4) return true;
@@ -381,6 +381,7 @@ async function sellSpecialItems() {
             await sleep(650);
         }
     }
+
 }
 
 async function manageTransmuting(currentTime, transmutableItemId) {
