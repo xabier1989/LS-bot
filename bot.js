@@ -326,9 +326,16 @@ function isTransmutableDrop(droppedItem) {
 }
 
 function engageNextWave(currentTime) {
-    // Engage the next wave
-    Plr.autoPilot = 1;
-    Cata.engage();
+
+    try {
+        // Engage the next wave
+        Plr.autoPilot = 1;
+        Cata.engage();
+    } catch (error) {
+        // Show the error on the console
+        console.log('Error engaging the next wave: ' + error);
+    }
+    
 
     if (currentTime > lastMovement) {
         // Set the last movement time
