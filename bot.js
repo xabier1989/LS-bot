@@ -12,7 +12,7 @@
 const screenCheckTime = 50;
 
 const chickenPercentage = 10;
-const minLevelWhite = 40;
+const minLevelWhite = 45;
 
 const maxOccupiedSlots = 7;
 
