@@ -207,8 +207,13 @@ async function killCatacombMonsters(currentTime) {
         // Check if the monster exists in the slot
         if (Cata.mobs[i] === undefined) continue;
 
-        // Attack the monster
-        Cbt.clickAttack(i);
+        try {
+            // Attack the monster
+            Cbt.clickAttack(i);
+        } catch (error) {
+            // Show the error
+            console.log('There was an error attacking the enemy: ' + error);
+        }
 
         // Wait a random amount of time
         nextAttackTime = currentTime + getRandomValue(220, 500);
@@ -307,7 +312,7 @@ function isSpecialDrop(droppedItem) {
     // Check if special drops are enabled
     if (!enabledSpecialDrops) return false;
 
-    if (Items.getLvlReq(droppedItem) >= 20 && Items.getLvlReq(droppedItem) <= 20 && droppedItem[7] > 0) return true;
+    //if (Items.getLvlReq(droppedItem) >= 20 && Items.getLvlReq(droppedItem) <= 20 && droppedItem[7] > 0) return true;
 
     return false;
 }
@@ -334,16 +339,16 @@ function engageNextWave(currentTime) {
     } catch (error) {
         // Show the error on the console
         console.log('Error engaging the next wave: ' + error);
-    }
-    
+    } finally {
 
-    if (currentTime > lastMovement) {
-        // Set the last movement time
-        lastMovement = currentTime + 650;
+        if (currentTime > lastMovement) {
+            // Set the last movement time
+            lastMovement = currentTime + 650;
 
-        if (!!Math.round(Math.random())) {
-            // Move the player
-            Maze.move(Math.round(Math.random()));
+            if (!!Math.round(Math.random())) {
+                // Move the player
+                Maze.move(Math.round(Math.random()));
+            }
         }
     }
 }
