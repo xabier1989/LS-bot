@@ -327,6 +327,9 @@ function isTransmutableDrop(droppedItem) {
     // Get level III items
     if (parseInt(droppedItem[6]) === 2 && parseInt(droppedItem[7]) <= 4) return true;
 
+    // Get level III items
+    if (parseInt(droppedItem[6]) === 3 && parseInt(droppedItem[7]) <= 1) return true;
+
     return false;
 }
 
