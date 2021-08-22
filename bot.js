@@ -321,9 +321,6 @@ function isTransmutableDrop(droppedItem) {
     // Stackable items can't be transmuted
     if (Items.hasQuantity(droppedItem) || isItemPickable(droppedItem) || isSpecialDrop(droppedItem) || parseInt(droppedItem[7]) === 0) return false;
 
-    // Get level II items
-    if (parseInt(droppedItem[6]) === 1 && parseInt(droppedItem[7]) > 3) return true;
-
     // Get level III items
     if (parseInt(droppedItem[6]) === 2) return true;
 
