@@ -18,6 +18,64 @@ const maxOccupiedSlots = 7;
 
 const enabledSpecialDrops = true;
 
+const transmutableDrops = [
+    {'skill': 0, 'minLevel': 0, 'maxLevel': 0, 'minLowMagical': 1, 'maxLowMagical': 2, 'minHighMagical': 1, 'maxHighMagical': 2 },
+    {'skill': 1, 'minLevel': 0, 'maxLevel': 0, 'minLowMagical': 1, 'maxLowMagical': 4, 'minHighMagical': 1, 'maxHighMagical': 4 },
+    {'skill': 2, 'minLevel': 0, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 3, 'minLevel': 0, 'maxLevel': 1, 'minLowMagical': 3, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 4, 'minLevel': 1, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 5, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 5, 'minLevel': 1, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 6, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 7, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 8, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 3, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 9, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 10, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 11, 'minLevel': 3, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 5, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 12, 'minLevel': 3, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 13, 'minLevel': 3, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 14, 'minLevel': 3, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 15, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 16, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 17, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 18, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 19, 'minLevel': 3, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 20, 'minLevel': 3, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 21, 'minLevel': 3, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 22, 'minLevel': 3, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 23, 'minLevel': 3, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 24, 'minLevel': 3, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 25, 'minLevel': 3, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 26, 'minLevel': 3, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 27, 'minLevel': 3, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 28, 'minLevel': 3, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 29, 'minLevel': 3, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 30, 'minLevel': 3, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 31, 'minLevel': 3, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 32, 'minLevel': 3, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 33, 'minLevel': 3, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 34, 'minLevel': 3, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 35, 'minLevel': 3, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 36, 'minLevel': 3, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 37, 'minLevel': 3, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 38, 'minLevel': 3, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 39, 'minLevel': 3, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 40, 'minLevel': 3, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 41, 'minLevel': 3, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 42, 'minLevel': 3, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 43, 'minLevel': 3, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 44, 'minLevel': 3, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 45, 'minLevel': 3, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 46, 'minLevel': 3, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 47, 'minLevel': 3, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 48, 'minLevel': 3, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 49, 'minLevel': 3, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 50, 'minLevel': 3, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    {'skill': 51, 'minLevel': 3, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    {'skill': 52, 'minLevel': 3, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    {'skill': 53, 'minLevel': 3, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    {'skill': 54, 'minLevel': 3, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 }
+];
+
 let nextAttackTime = 0;
 let nextEngage = 0;
 
@@ -321,11 +379,27 @@ function isTransmutableDrop(droppedItem) {
     // Stackable items can't be transmuted
     if (Items.hasQuantity(droppedItem) || isItemPickable(droppedItem) || isSpecialDrop(droppedItem) || parseInt(droppedItem[7]) === 0) return false;
 
-    // Get level III items
-    if (parseInt(droppedItem[6]) === 2) return true;
+    // Get the player transmuting skill level
+    const mutingLevel = parseInt(Plr.c[54][3][0]);
 
-    // Get level III items
-    if (parseInt(droppedItem[6]) === 3 && parseInt(droppedItem[7]) <= 2) return true;
+    // Get the skill level object
+    let skillCaps = transmutableDrops.find(s => mutingLevel === s.skill);
+
+    // Get the item level and magical
+    const itemLevel = parseInt(droppedItem[6]);
+    const itemMagic = parseInt(droppedItem[7]);
+
+    // Check that the item meets the level restrictions
+    if (itemLevel < skillCaps['minLevel'] || itemLevel > skillCaps['maxLevel']) return false;
+
+    if (skillCaps['minLevel'] === skillCaps['maxLevel']) {
+        // Check that the item meets the level requirements
+        return itemLevel === skillCaps['minLevel'] && itemMagic >= skillCaps['minLowMagical'] && itemMagic <= skillCaps['maxLowMagical'];
+    }
+
+    if (itemLevel >= skillCaps['minLevel'] && itemLevel < skillCaps['maxLevel'] && itemMagic >= skillCaps['minLowMagical'] && itemMagic <= skillCaps['minLowMagical']) return true;
+
+    if (itemMagic >= skillCaps['minHighMagical'] && itemMagic <= skillCaps['maxHighMagical']) return true;
 
     return false;
 }
