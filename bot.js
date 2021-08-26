@@ -397,7 +397,7 @@ function isTransmutableDrop(droppedItem) {
         return itemLevel === skillCaps['minLevel'] && itemMagic >= skillCaps['minLowMagical'] && itemMagic <= skillCaps['maxLowMagical'];
     }
 
-    if (itemLevel >= skillCaps['minLevel'] && itemLevel < skillCaps['maxLevel'] && itemMagic >= skillCaps['minLowMagical'] && itemMagic <= skillCaps['minLowMagical']) return true;
+    if (itemLevel >= skillCaps['minLevel'] && itemLevel < skillCaps['maxLevel'] && itemMagic >= skillCaps['minLowMagical'] && itemMagic <= skillCaps['maxLowMagical']) return true;
 
     if (itemMagic >= skillCaps['minHighMagical'] && itemMagic <= skillCaps['maxHighMagical']) return true;
 
