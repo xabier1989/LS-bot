@@ -380,7 +380,7 @@ function isTransmutableDrop(droppedItem) {
     if (Items.hasQuantity(droppedItem) || isItemPickable(droppedItem) || isSpecialDrop(droppedItem) || parseInt(droppedItem[7]) === 0) return false;
 
     // Get the player transmuting skill level
-    const mutingLevel = parseInt(Plr.c[54][3][0]);
+    const mutingLevel = Plr.c[54][3] !== undefined ? parseInt(Plr.c[54][3][0]) : 0;
 
     // Get the skill level object
     let skillCaps = transmutableDrops.find(s => mutingLevel === s.skill);
