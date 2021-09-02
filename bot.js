@@ -15,65 +15,75 @@ const chickenPercentage = 10;
 const minLevelWhite = 45;
 
 const maxOccupiedSlots = 7;
+const maxEssenceSlots = 16;
 
 const enabledSpecialDrops = true;
 
 const transmutableDrops = [
-    {'skill': 0, 'minLevel': 0, 'maxLevel': 0, 'minLowMagical': 1, 'maxLowMagical': 2, 'minHighMagical': 1, 'maxHighMagical': 2 },
-    {'skill': 1, 'minLevel': 0, 'maxLevel': 0, 'minLowMagical': 1, 'maxLowMagical': 4, 'minHighMagical': 1, 'maxHighMagical': 4 },
-    {'skill': 2, 'minLevel': 0, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 3, 'minLevel': 0, 'maxLevel': 1, 'minLowMagical': 3, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 4, 'minLevel': 1, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 5, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 5, 'minLevel': 1, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 6, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 7, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 8, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 3, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 9, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 10, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 11, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 5, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 12, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 13, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 14, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 15, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 16, 'minLevel': 2, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 17, 'minLevel': 2, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 18, 'minLevel': 2, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 19, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 20, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 21, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 22, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 23, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 24, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 25, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 26, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 27, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 28, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 29, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 30, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 31, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 32, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 33, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 34, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 35, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 36, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 37, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 38, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 39, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 40, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 41, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 42, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 43, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 44, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 45, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 46, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 47, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 48, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 49, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 50, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    {'skill': 51, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
-    {'skill': 52, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    {'skill': 53, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    {'skill': 54, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 }
+    { 'skill': 0, 'minLevel': 0, 'maxLevel': 0, 'minLowMagical': 1, 'maxLowMagical': 2, 'minHighMagical': 1, 'maxHighMagical': 2 },
+    { 'skill': 1, 'minLevel': 0, 'maxLevel': 0, 'minLowMagical': 1, 'maxLowMagical': 4, 'minHighMagical': 1, 'maxHighMagical': 4 },
+    { 'skill': 2, 'minLevel': 0, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 3, 'minLevel': 0, 'maxLevel': 1, 'minLowMagical': 3, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 4, 'minLevel': 1, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 5, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 5, 'minLevel': 1, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 6, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 7, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 8, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 3, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 9, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 10, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 11, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 5, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 12, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 13, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 14, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 15, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 16, 'minLevel': 2, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 17, 'minLevel': 2, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 18, 'minLevel': 2, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 19, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 20, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 21, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 22, 'minLevel': 2, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 23, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 24, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 25, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 26, 'minLevel': 2, 'maxLevel': 7, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 27, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 28, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 29, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 30, 'minLevel': 2, 'maxLevel': 8, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 31, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 32, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 33, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 34, 'minLevel': 2, 'maxLevel': 9, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 35, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 36, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 37, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 38, 'minLevel': 2, 'maxLevel': 10, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 39, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 40, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 41, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 42, 'minLevel': 2, 'maxLevel': 11, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 43, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 44, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 45, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 46, 'minLevel': 2, 'maxLevel': 12, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 47, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 48, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 49, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 50, 'minLevel': 2, 'maxLevel': 13, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 51, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 52, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
+    { 'skill': 53, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 54, 'minLevel': 2, 'maxLevel': 14, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 }
+];
+
+const essencePrices = [
+    { 'tier': 1, 'prices': [0.03, 0.03, 0.08, 0.13, 0.25, 0.33, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5] },
+    { 'tier': 2, 'prices': [0.1, 0.1, 0.15, 0.25, 0.5, 0.65, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0] },
+    { 'tier': 3, 'prices': [0.2, 0.2, 0.3, 0.5, 1.0, 1.25, 1.5, 2.0, 2.0, 2.0, 2.0, 2.0] },
+    { 'tier': 4, 'prices': [0.4, 0.5, 0.7, 1.0, 1.5, 2.0, 2.5, 2.0, 2.5, 2.5, 2.5, 2.5] },
+    { 'tier': 5, 'prices': [0.7, 0.8, 1.0, 1.5, 2.25, 3.0, 4.25, 6.0, 6.0, 6.0, 6.0, 6.0] },
+    { 'tier': 6, 'prices': [1.0, 1.2, 1.5, 2.0, 3.25, 5.0, 7.25, 9.0, 9.0, 9.0, 9.0, 9.0] }
 ];
 
 let nextAttackTime = 0;
@@ -162,37 +172,42 @@ async function checkCurrentScreen() {
                 console.log('Recovery finishing at ' + new Date(recoveryFinished).toLocaleTimeString("es-ES"));
             }
 
-            // Get if there's any transmutable item
-            let transmutableItem = getTransmutableItem();
+            if (isEssenceInventoryFull()) {
+                // Sell highest essence pack
+                await sellHighestEssencePack();
+            } else {
+                // Get if there's any transmutable item
+                let transmutableItem = getTransmutableItem();
 
-            if (transmutableItem > 0 || playerTransmuting > 0) {
-                // Manage the transmuting
-                await manageTransmuting(currentTime, transmutableItem);
-            } else if (playerTransmuting === 0 && currentTime > recoveryFinished) {
-                console.log('Start catacombs');
+                if (transmutableItem > 0 || playerTransmuting > 0) {
+                    // Manage the transmuting
+                    await manageTransmuting(currentTime, transmutableItem);
+                } else if (playerTransmuting === 0 && currentTime > recoveryFinished) {
+                    console.log('Start catacombs');
 
-                // Clear the recovery timer
-                recoveryFinished = 0;
+                    // Clear the recovery timer
+                    recoveryFinished = 0;
 
-                do {
-                    // Move the player to the catacombs
-                    Cata.click();
+                    do {
+                        // Move the player to the catacombs
+                        Cata.click();
 
-                    // Wait for the catacombs to load
-                    await sleep(15);
+                        // Wait for the catacombs to load
+                        await sleep(15);
 
-                } while (!isPlayerInCatacombs());
+                    } while (!isPlayerInCatacombs());
 
-                // Hide the inventory
-                let inventoryPopUp = Inv.get();
-                if (inventoryPopUp) inventoryPopUp.del();
+                    // Hide the inventory
+                    let inventoryPopUp = Inv.get();
+                    if (inventoryPopUp) inventoryPopUp.del();
 
-                // Hide the market
-                let marketPopUp = Mkt.get();
-                if (marketPopUp) Mkt.tog();
+                    // Hide the market
+                    let marketPopUp = Mkt.get();
+                    if (marketPopUp) Mkt.tog();
 
-                // Wait for the player to be in the catacombs
-                await sleep(75);
+                    // Wait for the player to be in the catacombs
+                    await sleep(75);
+                }
             }
         }
     }
@@ -335,7 +350,73 @@ async function checkPlayerHasToChicken() {
 
 function isInventoryFull() {
     // Check if the inventory is full
-    return Object.keys(Plr.items).filter(i => !Items.isEquipped(i) && !Items.hasQuantity(Plr.items[i])).length >= maxOccupiedSlots;
+    return Object.keys(Plr.items).filter(i => !Items.isEquipped(i) && !Items.hasQuantity(Plr.items[i])).length >= maxOccupiedSlots || isEssenceInventoryFull();
+}
+
+function isEssenceInventoryFull() {
+    // Check if the essence inventory is full
+    return Object.keys(Plr.items).filter(i => !Items.isEquipped(i) && Items.hasQuantity(Plr.items[i])).length >= maxEssenceSlots;
+}
+
+async function sellHighestEssencePack() {
+    // Get the player essences
+    let playerEssences = Object.keys(Plr.items).filter(i => !Items.isEquipped(i) && Items.hasQuantity(Plr.items[i])).sort((a, b) => Plr.items[b][8][16] - Plr.items[a][8][16]);
+
+    for (let i = 0; i < playerEssences.length; i++) {
+        // Get the essence item
+        const essenceItem = Plr.items[playerEssences[i]];
+
+        // Retrieve the level and magical for the essence
+        const essenceLevel = parseInt(essenceItem[6]) + 1;
+        const essenceMagic = parseInt(essenceItem[7]);
+
+        // Check for any price coincidence
+        const essenceSellPrice = essencePrices.find(e => parseInt(e.tier) === essenceLevel);
+
+        if (essenceSellPrice !== undefined && essenceSellPrice !== null) {
+            // Get the total price for the sell
+            let marketPrice = essenceSellPrice.prices[essenceMagic] * parseInt(essenceItem[8][16]);
+
+            if (parseFloat(marketPrice) < 1.0) {
+                // The minimum sell price should be 1fg
+                marketPrice = 1.0;
+            }
+
+            // Round the price
+            const finalPrice = parseFloat(marketPrice.toString()).toFixed(2);
+
+            if (!Mkt.get()) {
+                // Show the market
+                document.getElementById('townObj0').click();
+
+                // Wait for the window to load
+                await sleep(25);
+
+                // Click the sell window
+                document.querySelectorAll('div.njRBWrap.marketTabs')[0].children[1].click();
+            }
+
+            if (Object.entries(Mkt.I).length < 25) {
+                // Place the item on the market
+                Mkt.get().item.set(essenceItem);
+
+                // Set the price
+                document.getElementById('mkSellCost').value = finalPrice;
+                document.getElementById('mkGpwd').value = goldPassword;
+
+                // Wait for the text to load
+                await sleep(25);
+
+                // Submit the purchase
+                document.getElementById('mkBuySell').click();
+
+                // Wait for the next item
+                await sleep(650);
+            }
+
+            break;
+        }
+    }
 }
 
 function isItemPickable(droppedItem) {
