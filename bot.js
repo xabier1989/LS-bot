@@ -28,9 +28,9 @@ const transmutableDrops = [
     { 'skill': 5, 'minLevel': 1, 'maxLevel': 1, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
     { 'skill': 6, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
     { 'skill': 7, 'minLevel': 1, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    { 'skill': 8, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 3, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
-    { 'skill': 9, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
-    { 'skill': 10, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 4, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
+    { 'skill': 8, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
+    { 'skill': 9, 'minLevel': 2, 'maxLevel': 2, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 10, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
     { 'skill': 11, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 5, 'minHighMagical': 1, 'maxHighMagical': 3 },
     { 'skill': 12, 'minLevel': 2, 'maxLevel': 3, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
     { 'skill': 13, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
@@ -38,7 +38,7 @@ const transmutableDrops = [
     { 'skill': 15, 'minLevel': 2, 'maxLevel': 4, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
     { 'skill': 16, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
     { 'skill': 17, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
-    { 'skill': 18, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 15 },
+    { 'skill': 18, 'minLevel': 3, 'maxLevel': 5, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 9 },
     { 'skill': 19, 'minLevel': 3, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 1 },
     { 'skill': 20, 'minLevel': 3, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 3 },
     { 'skill': 21, 'minLevel': 3, 'maxLevel': 6, 'minLowMagical': 1, 'maxLowMagical': 15, 'minHighMagical': 1, 'maxHighMagical': 5 },
@@ -451,7 +451,7 @@ function isSpecialDrop(droppedItem) {
     // Check if special drops are enabled
     if (!enabledSpecialDrops) return false;
 
-    if (Items.getLvlReq(droppedItem) >= 20 && Items.getLvlReq(droppedItem) <= 20 && droppedItem[7] > 0) return true;
+    if (Items.getLvlReq(droppedItem) >= 25 && Items.getLvlReq(droppedItem) <= 25 && droppedItem[7] > 0) return true;
 
     return false;
 }
