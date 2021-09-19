@@ -459,8 +459,8 @@ function isSpecialDrop(droppedItem) {
 }
 
 function isTransmutableDrop(droppedItem) {
-    // Stackable items can't be transmuted
-    if (Items.hasQuantity(droppedItem) || isItemPickable(droppedItem) || isSpecialDrop(droppedItem) || parseInt(droppedItem[7]) === 0) return false;
+    // Remove rods, essences and white items
+    if (isItemPickable(droppedItem) || isSpecialDrop(droppedItem) || parseInt(droppedItem[7]) === 0 || parseInt(droppedItem[4]) === 4) return false;
 
     // Get the player transmuting skill level
     const mutingLevel = Plr.c[54][3] !== undefined ? parseInt(Plr.c[54][3][0]) : 0;
