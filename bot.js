@@ -12,7 +12,8 @@
 const screenCheckTime = 50;
 
 const chickenPercentage = 10;
-const minLevelWhite = 45;
+const minLevelWhite = 35;
+const minLevelMagical = 45;
 
 const maxOccupiedSlots = 7;
 const maxEssenceSlots = 16;
@@ -443,8 +444,11 @@ function isItemPickable(droppedItem) {
     // Check for the item's extra slots
     if (parseInt(droppedItem[8][11]) >= 4) return true;
 
-    // Check if the item has the minimum level
-    if (Items.getLvlReq(droppedItem) >= minLevelWhite) return true;
+    // Check if the white item has the minimum level
+    if (Items.getLvlReq(droppedItem) >= minLevelWhite && parseInt(droppedItem[7]) === 0) return true;
+
+    // Check if the magical item has the minimum level
+    if (Items.getLvlReq(droppedItem) >= minLevelMagical) return true;
 
     return false;
 }
