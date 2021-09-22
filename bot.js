@@ -371,7 +371,7 @@ async function sellHighestEssencePack() {
 
         // Retrieve the level and magical for the essence
         const essenceLevel = parseInt(essenceItem[6]) + 1;
-        const essenceMagic = parseInt(essenceItem[7]);
+        const essenceMagic = parseInt(essenceItem[7]) - 1;
 
         // Check for any price coincidence
         const essenceSellPrice = essencePrices.find(e => parseInt(e.tier) === essenceLevel);
