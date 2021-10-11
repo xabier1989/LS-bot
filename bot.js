@@ -18,7 +18,7 @@ const minLevelMagical = 45;
 const maxOccupiedSlots = 7;
 const maxEssenceSlots = 16;
 
-const enabledSpecialDrops = true;
+const enabledSpecialDrops = false;
 
 const transmutableDrops = [
     { 'skill': 0, 'minLevel': 0, 'maxLevel': 0, 'minLowMagical': 1, 'maxLowMagical': 2, 'minHighMagical': 1, 'maxHighMagical': 2 },
@@ -661,6 +661,32 @@ function initializeVariables() {
     recoveryFinished = 0;
 }
 
+async function checkChatMessageSent(event) {
+    // Check if the ENTER key has been pressed in the chat window
+    if (event.keyCode !== 13 || !event.srcElement.classList.contains('chatLogTB')) return;
+
+    // Retrieve the text in the box
+    let chatText = event.srcElement.value.trim();
+
+    // Check if it's any command
+    if (chatText.length === 0 || !chatText.startsWith('/')) return;
+
+    switch (chatText) {
+
+        case '/apilar':
+            // Get all the stackable items
+            var stackableItems = Object.keys(Plr.items).filter(i => Items.canStack(Plr.items[i]));
+
+            for (let i = 0; i < stackableItems.length; i++) {
+                // Try to stack each item
+                Plr.checkItemAutoStack(stackableItems[i]);
+                await sleep(75);
+            }
+
+            break;
+    }
+}
+
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -668,3 +694,6 @@ async function sleep(ms) {
 function getRandomValue(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
+// Add the keyboard events
+document.addEventListener('keyup', () => checkChatMessageSent(event), false);
