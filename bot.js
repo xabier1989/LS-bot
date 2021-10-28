@@ -11,7 +11,7 @@
 
 const screenCheckTime = 50;
 
-const chickenPercentage = 10;
+const lifeChickenPercentage = 10;
 const minLevelWhite = 35;
 const minLevelMagical = 45;
 
@@ -164,13 +164,18 @@ async function checkCurrentScreen() {
 
             if (recoveryFinished === 0) {
                 // Get the player regeneration per second
-                let playerRegenPerSecond = (1 + Math.floor(Plr.c[6] / 5) + Math.floor(Plr.c[18] / 25) + Plr.c[56][9]);
+                let healthRegenPerSecond = (1 + Math.floor(Plr.c[6] / 5) + Math.floor(Plr.c[18] / 25) + Plr.c[56][9]);
+                let manaRegenPerSecond = (1 + Math.floor(Plr.c[6] / 5) + Math.floor(Plr.c[19] / 25) + Plr.c[56][10]);
 
                 // Get the amount of health to regenerate
                 let healthRegenNeeded = Math.floor(Plr.c[20] * 0.75) - parseInt(Plr.c[22]);
+                let manaRegenNeeded = Math.floor(Plr.c[21] * 0.75) - parseInt(Plr.c[23]);
+
+                // Check the maximum regen time
+                let regenNeeded = healthRegenNeeded >= manaRegenNeeded ? (healthRegenNeeded / healthRegenPerSecond) : (manaRegenNeeded / manaRegenPerSecond);
 
                 // Get the recovery time limit
-                recoveryFinished = currentTime + (healthRegenNeeded / playerRegenPerSecond) * 1000;
+                recoveryFinished = currentTime + regenNeeded * 1000;
 
                 console.log('Recovery finishing at ' + new Date(recoveryFinished).toLocaleTimeString("es-ES"));
             }
@@ -260,6 +265,9 @@ async function killCatacombMonsters(currentTime) {
     // Check if the time passed between attacks
     if (nextAttackTime > currentTime) return;
 
+    // Select the correct attack
+    selectPlayerAttack();
+
     // Get the number of monsters
     lastMonsterAmount = getAliveMonsters();
 
@@ -330,7 +338,7 @@ async function goBackInTown() {
     // Clear the recovery timer
     recoveryFinished = 0;
 
-    console.log('Player chicken due to: ' + (isInventoryFull() ? 'inventory full' : 'low health'));
+    console.log('Player chicken due to: ' + (isInventoryFull() ? 'inventory full' : 'recovery'));
 
     if (lastMonsterAmount > 3) {
         // Reset the maze
@@ -342,10 +350,8 @@ async function goBackInTown() {
 }
 
 async function checkPlayerHasToChicken() {
-    // Get the chicken health
-    let chickenHealth = Math.round(chickenPercentage * Plr.c[20] / 100);
 
-    if (isInventoryFull() || parseInt(Plr.c[22]) <= chickenHealth) {
+    if (isInventoryFull() || hasPlayerLowHealth() || hasPlayerLowMana()) {
         // Move the player to the town
         await goBackInTown();
     }
@@ -646,6 +652,38 @@ function getAliveMonsters() {
 function isTransmutingWindowOpened() {
     // Check if there's any transmuting window opened
     return Array.from(document.querySelectorAll('div.popupTitle')).some(d => d.textContent === 'Transmuting');
+}
+
+function hasPlayerLowHealth() {
+    // Check if the player has low health
+    return parseInt(Plr.c[22]) <= Math.round(lifeChickenPercentage * Plr.c[20] / 100);
+}
+
+function hasPlayerLowMana() {
+    // Only check for magical characters
+    if (!isMagicalCharacter()) return false;
+
+    // Get the mana consumed by the charm equipped
+    let charmId = Object.keys(Plr.items).find(i => Items.isEquipped(i) && parseInt(Plr.items[i][4]) === 2 && parseInt(Plr.items[i][5]) < 5);
+
+    // Check if the mana is below the charm cost
+    return parseInt(Plr.c[23]) < (8 * Plr.items[charmId][6] + 5);
+}
+
+function isMagicalCharacter() {
+    // Check if the selected character is a magician, warlock or alchemist
+    return [3, 9, 11].includes(Plr.c[5]);
+}
+
+function selectPlayerAttack() {
+
+    if (isMagicalCharacter()) {
+        // The character is magical, select the charm
+        Gs.setSelAtk(1);
+    } else {
+        // The character is melee, select the weapon
+        Gs.setSelAtk(0);
+    }
 }
 
 function initializeVariables() {
